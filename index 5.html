@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SWEET ARCHIVE · 달콤함을 기록하는 작은 디저트 가게</title>
+<meta name="description" content="식품의약품안전처 공공데이터로 만나는 디저트 영양성분 도감">
+<style>
+:root{color-scheme:light;--pink:#F5D4DE;--cream:#FFF9EE;--cherry:#A83F50;--brown:#783B40;--line:#e3b9c1}
+*{box-sizing:border-box}
+body{margin:0;color:var(--brown);font-family:"Noto Serif KR","Apple SD Gothic Neo",Georgia,serif;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,0);background:radial-gradient(circle,rgba(245,212,222,.55) 1.5px,transparent 2px) 0 0/22px 22px,var(--cream)}
+.gingham{background:linear-gradient(90deg,rgba(168,63,80,.13) 50%,transparent 0) 0 0/36px 36px,linear-gradient(rgba(168,63,80,.13) 50%,transparent 0) 0 0/36px 36px,var(--pink)}
+header{padding:0 16px 60px;position:relative}
+header:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:16px;background:radial-gradient(circle at 12px 16px,var(--cream) 11px,transparent 12px) 0 0/24px 16px}
+.top{height:calc(54px + env(safe-area-inset-top,0px));margin:0 -16px 38px;background:repeating-linear-gradient(90deg,var(--cherry) 0 48px,var(--cream) 48px 96px);position:relative}
+.top:after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:14px;background:radial-gradient(circle at 24px 0,var(--cherry) 24px,transparent 25px) 0 0/96px 14px,radial-gradient(circle at 72px 0,var(--cream) 24px,transparent 25px) 0 0/96px 14px}
+.sign{max-width:620px;margin:0 auto;text-align:center;background:var(--cream);border:3px double var(--cherry);border-radius:220px 220px 22px 22px;padding:30px 24px 30px;box-shadow:0 8px 0 rgba(120,59,64,.12)}
+.bow{width:74px;display:block;margin:0 auto 2px}
+.badge{display:inline-block;border:1.5px solid var(--cherry);border-radius:30px;padding:2px 16px;letter-spacing:3px;font-size:12px;background:#fff}
+h1{font:italic 700 clamp(40px,8vw,72px) Georgia,serif;margin:8px 0 0;color:var(--cherry);text-shadow:2px 2px 0 var(--pink)}
+.slogan{margin:2px 0 16px}
+main{max-width:1080px;margin:0 auto;padding:30px 18px}
+h2{font:italic 700 28px Georgia,serif;margin:0 0 6px}
+.sm,.muted{font-size:13px;color:#976f6c;margin:2px 0}
+.btn,input,select{font:inherit;border:1.5px solid #c98c90;border-radius:24px;padding:9px 16px;background:#fff;color:var(--brown)}
+.btn{cursor:pointer}.btn:hover,.btn.on{background:var(--cherry);color:#fff;border-color:var(--cherry)}.btn:disabled{opacity:.45;cursor:default}
+.btn.s{padding:5px 12px;font-size:13px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+form.row input{flex:1;min-width:0}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.chip{display:flex;align-items:center;gap:6px;padding:4px 14px 4px 6px;background:var(--pink);border-color:var(--pink)}.chip svg{width:30px;height:30px}
+.menuhead{margin-top:24px;background:var(--cherry);color:var(--cream);text-align:center;letter-spacing:8px;padding:9px;font:italic 700 20px Georgia,serif;border-radius:16px 16px 0 0}
+.case{border:2px solid var(--cherry);border-top:0;background:#fffdf8;padding:26px 18px 22px;border-radius:0 0 18px 18px;box-shadow:inset 0 0 0 6px #fffdf8,inset 0 0 0 7.5px var(--line);min-height:220px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:22px}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:0 0 14px;text-align:center;box-shadow:0 5px 0 #f2ded8;display:flex;flex-direction:column;gap:3px;overflow:hidden}
+.card>*:not(.art){margin-left:12px;margin-right:12px}
+.card h3{font-size:16px;margin:6px 12px 0;overflow-wrap:anywhere}.card p{margin-top:0;margin-bottom:0}
+.card p b{background:var(--cherry);color:#fff;border-radius:12px;padding:1px 9px;font-size:13px;white-space:nowrap}
+.art{background:var(--pink);padding:18px 0 14px;position:relative}.art svg{width:84px;height:84px}
+.art:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:10px;background:radial-gradient(circle at 10px 10px,#fff 9px,transparent 10px) 0 0/20px 10px}
+.card:nth-child(3n+2) .art{background:#FFEBD2}.card:nth-child(3n) .art{background:#FBE0E4}
+.cmp{font-size:13px;cursor:pointer}.cmp input{padding:0;margin-right:4px;accent-color:var(--cherry)}
+.cb{position:relative;display:inline-block;width:22px;height:22px}.cb svg{position:absolute;inset:0;width:22px;height:22px}.cb .g{opacity:.22}
+.cubes{display:flex;flex-wrap:wrap;gap:2px;justify-content:center;min-height:22px}
+#status{min-height:26px}#status.err{color:var(--cherry);font-weight:700}
+.receipt{max-width:430px;margin:56px auto 30px;background:#fff;padding:26px 22px 32px;font-family:"Courier New",monospace;position:relative;box-shadow:0 6px 0 rgba(120,59,64,.08);font-size:14px;border-top:6px solid var(--cherry)}
+.receipt:after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:10px;background:linear-gradient(135deg,#fff 50%,transparent 0) 0 0/14px 10px,linear-gradient(225deg,#fff 50%,transparent 0) 0 0/14px 10px}
+.receipt h2{text-align:center}.receipt .c{text-align:center}
+.bc{height:34px;margin:14px 0 10px;background:repeating-linear-gradient(90deg,var(--brown) 0 2px,transparent 2px 5px,var(--brown) 5px 6px,transparent 6px 10px)}
+.ln{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px dashed #e6cfcf}
+.ln select{padding:2px 8px;font-size:12px;max-width:100%}
+.tot{border-top:2px solid var(--brown);margin-top:8px;padding-top:6px}.tot .ln{border:0;font-weight:700;padding:2px 0}
+.bar{height:12px;border-radius:8px;background:var(--cherry)}.bar.alt{background:#d98a98}.bar.alt2{background:#783B40}
+.bw{background:var(--pink);border-radius:8px;margin:2px 0 8px}
+dialog{border:6px double var(--cherry);border-radius:20px;background:var(--cream);color:var(--brown);width:min(94vw,520px);padding:22px}
+dialog::backdrop{background:rgba(80,37,43,.4)}
+#cmpbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:5;display:none}
+footer{text-align:center;padding:28px 18px;font-size:12px;border-top:6px double var(--cherry);background:var(--pink)}
+a{color:var(--cherry)}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:12px}.art svg{width:62px;height:62px}.case{padding:20px 10px 16px}.sign{border-radius:140px 140px 18px 18px;padding:26px 14px}}
+</style></head><body>
+<header class="gingham"><div class="top"></div>
+<div class="sign">
+<svg class="bow" viewBox="0 0 92 56" stroke="#783B40" stroke-width="1.6" stroke-linejoin="round"><path d="M46 28C30 4 6 6 8 26s26 8 38 2zM46 28c16-24 40-22 38-2s-26 8-38 2z" fill="#A83F50"/><path d="M42 30l-10 24 10-6 4 6 4-6 10 6-10-24z" fill="#A83F50"/><circle cx="46" cy="28" r="6" fill="#d9707f"/><path d="M16 18q8-4 18 6M76 18q-8-4-18 6" fill="none" stroke="#FFF9EE"/></svg>
+<span class="badge">✦ SINCE 2026 · DESSERT LIBRARY ✦</span>
+<h1>Sweet Archive</h1>
+<p class="slogan">달콤함을 기록하는 작은 디저트 가게</p>
+<button class="btn" data-a="go">오늘의 진열대 보기 ♡</button>
+</div></header>
+<main id="shop">
+<h2>Today’s menu</h2>
+<p class="muted">디저트를 고르고, 그 안에 담긴 영양성분을 발견해 보세요. 모든 수치는 식품의약품안전처 공공데이터입니다.</p>
+<form class="row" id="sf"><input id="q" maxlength="30" placeholder="어떤 디저트가 궁금하세요? (예: 딸기케이크)" aria-label="디저트 검색"><button class="btn">검색</button></form>
+<div class="chips" id="chips"></div>
+<div class="row"><span class="sm">검색 범위</span><button class="btn s" data-a="type" data-t="rep">대표 식품</button><button class="btn s" data-a="type" data-t="prod">시중 제품</button><button class="btn s" data-a="type" data-t="all">전체</button></div>
+<div class="menuhead">✦ MENU ✦</div>
+<section class="case"><p id="status" class="muted" role="status"></p><div class="grid" id="grid"></div><p class="c" style="text-align:center" id="more"></p></section>
+
+<section class="receipt"><div class="c sm">♡ SWEET ARCHIVE ♡</div><h2>Your sweet receipt</h2><div class="c sm" id="date"></div><div id="basket"></div><div id="total"></div>
+<p class="sm">식품마다 기준량이 달라요(예: 100g). 항목별로 ‘기준량’ 또는 ‘식품중량(1개/1팩 등)’을 고를 수 있고, 환산은 단위(g, ml)가 같을 때만 가능합니다. 실제 섭취량과 다를 수 있습니다.</p>
+<div class="bc" aria-hidden="true"></div><div class="c sm">THANK YOU · SEE YOU AGAIN ♡</div><div class="c" style="margin-top:8px"><button class="btn s" data-a="clear">비우기</button></div></section>
+</main>
+<button class="btn on" id="cmpbar" data-a="cmpgo"></button>
+<dialog id="dlg"><div id="dbody"></div><p style="text-align:right;margin:14px 0 0"><button class="btn" data-a="close">닫기</button></p></dialog>
+<footer>DATA SOURCE · <a href="https://www.data.go.kr/data/15127578/openapi.do" target="_blank" rel="noopener">식품의약품안전처_식품영양성분DB정보</a> (공공데이터포털)<br>수치는 원본 그대로 표시하며, 원본에 오류·이상값이 있을 수 있습니다. 의학적 조언이 아닙니다.<br>Sweet Archive — educational project</footer>
+
+<script>
+// 데이터는 GitHub Actions가 만든 data/desserts.json 에서 읽습니다. (인증키는 사이트 어디에도 없습니다.)
+const DATA_URL='./data/desserts.json';let DB=null;
+const ROWS=24, SUGAR_CUBE_G=3;
+const $=s=>document.querySelector(s);
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fv=(v,u)=>v==null?'미제공':Math.round(v*10)/10+' '+u;
+const NUT=[['kcal','열량','kcal'],['sugar','당류','g'],['fat','지방','g'],['protein','단백질','g'],['carb','탄수화물','g']];
+const CATS=['케이크','쿠키','마카롱','도넛','아이스크림','푸딩','스콘'];
+const SH='<ellipse cx="32" cy="57" rx="23" ry="3" fill="#783B40" opacity=".12" stroke="none"/>';
+const A={
+케이크:SH+'<rect x="9" y="41" width="46" height="14" rx="4" fill="#F5D4DE"/><rect x="9" y="36" width="46" height="6" rx="3" fill="#FFF9EE"/><rect x="9" y="27" width="46" height="10" rx="4" fill="#F5D4DE"/><path d="M9 28q0-7 23-7t23 7q-3 5-6 0-3 6-6 0-3 6-6 0-3 6-6 0-3 6-6 0-3 6-6 0z" fill="#FFF9EE"/><circle cx="32" cy="17" r="5.5" fill="#A83F50"/><path d="M32 12q0-5 6-7M32 12q-3-3-7-2"/><path d="M30 15q1-1 2-1" stroke="#FFF9EE" stroke-width="1.2"/><path d="M16 48h.1M26 46h.1M37 49h.1M47 47h.1" stroke="#A83F50" stroke-width="2.6"/>',
+쿠키:SH+'<path d="M32 10c14 0 23 9 23 22s-9 22-23 22S9 45 9 32 18 10 32 10z" fill="#E8B87A"/><path d="M19 22q5-6 13-6" stroke="#FFF9EE" stroke-width="2"/><path d="M21 26l5 2-2 5-5-2zM38 20l5 1-1 5-5-1zM42 36l5 2-2 5-5-2zM24 41l4 1-1 4-4-1zM33 31l3 1-1 3-3-1z" fill="#783B40"/><path d="M45 48q3-1 5-4" stroke-dasharray="1 3"/>',
+마카롱:SH+'<path d="M10 30q0-15 22-15t22 15z" fill="#F5D4DE"/><path d="M10 30h44v3q-3 3-6 0-3 3-6 0-3 3-6 0-3 3-6 0-3 3-6 0-3 3-6 0-3 3-5 0z" fill="#FFF9EE"/><path d="M10 36h44q0 13-22 13T10 36z" fill="#F5D4DE"/><path d="M20 22q3-4 8-4" stroke="#FFF9EE" stroke-width="2"/><path d="M14 46q1 4 5 5M50 46q-1 4-5 5"/><path d="M30 41q2 2 4 0" stroke="#FFF9EE" stroke-width="1.6"/>',
+도넛:SH+'<circle cx="32" cy="32" r="24" fill="#E8B87A"/><path d="M32 12c13 0 18 8 20 14 3 6 0 15-6 19-5 4-10 3-14 3-8 0-14-2-18-8-4-7-2-16 4-21 4-4 9-7 14-7z" fill="#F5D4DE"/><circle cx="32" cy="32" r="6.5" fill="#FFF9EE"/><path d="M20 24l4-2M38 19l3 3M45 32l3-2M22 42l3-3M36 45l1-4M29 17l-1 4" stroke="#A83F50" stroke-width="2"/><path d="M42 41l3 2M17 33l3 1" stroke="#783B40" stroke-width="2"/>',
+아이스크림:'<path d="M21 36L32 60 43 36z" fill="#E8B87A"/><path d="M24 42l8 8M29 38l9 9M40 42l-8 8M35 38l-9 9" stroke-width="1"/><path d="M17 37q-1-13 15-13t15 13q-3 4-7 0-4 4-8 0-4 4-8 0-4 4-7 0z" fill="#F5D4DE"/><path d="M21 27q0-12 11-12t11 12z" fill="#FFF9EE"/><circle cx="32" cy="12" r="4.5" fill="#A83F50"/><path d="M32 8q1-4 5-5"/><path d="M24 32q1-3 4-3" stroke="#FFF9EE" stroke-width="1.6"/>',
+푸딩:'<ellipse cx="32" cy="55" rx="26" ry="5" fill="#FFF9EE"/><path d="M16 26h32l-3 26H19z" fill="#F7DFA0"/><path d="M14 27q0-10 18-10t18 10z" fill="#9A5B3C"/><path d="M18 27v5M31 27v8M45 27v4" stroke="#9A5B3C" stroke-width="4"/><path d="M25 38v8" stroke="#FFF9EE" stroke-width="2"/><circle cx="32" cy="13" r="4.5" fill="#A83F50"/><path d="M32 9q1-4 5-5"/>',
+스콘:SH+'<path d="M7 47Q8 22 32 17q24 4 25 30z" fill="#E8B87A"/><path d="M12 38q20-8 40 0" stroke-dasharray="2 3"/><path d="M22 30q10-7 20 0q-4 6-10 6t-10-6z" fill="#A83F50"/><path d="M27 29q3-2 6-1" stroke="#FFF9EE" stroke-width="1.6"/><path d="M14 44h.1M26 43h.1M40 44h.1M50 42h.1" stroke="#783B40" stroke-width="2.4"/>',
+기본:'<path d="M24 30q2-18 14-22M42 28q-4-12-4-20"/><path d="M38 8q8-4 12 2-6 4-12-2z" fill="#9CB27A"/><circle cx="24" cy="42" r="10" fill="#A83F50"/><circle cx="42" cy="40" r="10" fill="#A83F50"/><path d="M20 38q1-3 4-3M38 36q1-3 4-3" stroke="#FFF9EE" stroke-width="1.6"/>'};
+const RX={케이크:/케이크|케익/,쿠키:/쿠키/,마카롱:/마카롱/,도넛:/도넛|도너츠/,아이스크림:/아이스크림|젤라또/,푸딩:/푸딩/,스콘:/스콘/};
+const art=(n,c)=>`<svg viewBox="0 0 64 64" fill="none" stroke="#783B40" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true">${A[c&&A[c]?c:(CATS.find(k=>RX[k].test(n))||'기본')]}</svg>`;
+const cube=f=>`<span class="cb"><svg class="g" viewBox="0 0 24 24">${cp()}</svg><svg viewBox="0 0 24 24" style="clip-path:inset(0 ${Math.round((1-f)*100)}% 0 0)">${cp()}</svg></span>`;
+const cp=()=>'<path d="M12 3l9 4.5v9L12 21l-9-4.5v-9z" fill="#fff" stroke="#783B40" stroke-width="1.3" stroke-linejoin="round"/><path d="M3 7.5L12 12l9-4.5M12 12v9" fill="none" stroke="#783B40" stroke-width="1.3"/>';
+function cubes(g,max=8){if(g==null)return '';const n=g/SUGAR_CUBE_G,full=Math.floor(n),fr=n-full;let h='';for(let i=0;i<Math.min(full,max);i++)h+=cube(1);if(full<max&&fr>=.1)h+=cube(fr);return `<div class="cubes" title="각설탕 1개=${SUGAR_CUBE_G}g로 환산">${h}${full>max?`<span class="sm">+${full-max}</span>`:''}</div>`}
+const S={q:'케이크',cat:'케이크',type:'rep',page:1,total:0,items:[],cart:[],cmp:[],busy:false};
+try{S.cart=JSON.parse(localStorage.getItem('sa_cart')||'[]').filter(c=>c&&c.x&&c.x.name)}catch(e){}
+const save=()=>{try{localStorage.setItem('sa_cart',JSON.stringify(S.cart))}catch(e){}};
+const status=(t,err)=>{const s=$('#status');s.textContent=t;s.className='muted'+(err?' err':'')};
+// ---- 단위 환산 ----
+const amt=s=>{const m=/([\d.]+)\s*(g|ml)\b/i.exec(String(s||'').replace(/,/g,''));return m?{v:+m[1],u:m[2].toLowerCase()}:null};
+const canUnit=x=>{const b=amt(x.basis),w=amt(x.weight);return !!(b&&w&&b.u===w.u&&b.v>0&&w.v>0)};
+const mult=(x,m)=>m==='u'&&canUnit(x)?amt(x.weight).v/amt(x.basis).v:1;
+// ---- 데이터 불러오기 ----
+async function load(more){
+ if(!DB){
+  status('데이터를 불러오는 중… 🍰');
+  try{const r=await fetch(DATA_URL,{cache:'no-cache'});if(!r.ok)throw new Error('HTTP '+r.status);DB=await r.json();if(!DB||!Array.isArray(DB.items)||!DB.items.length)throw new Error('empty')}
+  catch(e){DB=null;S.items=CATS.map(c=>({name:c,cat:c,pre:1}));S.total=0;status('미리보기 모드 · 영양 데이터 파일(data/desserts.json)이 아직 없어요. GitHub Actions를 실행하면 공공데이터가 채워집니다. 임의의 수치는 만들지 않아요.');return draw()}
+ }
+ const q=S.q.replace(/\s/g,'');
+ const all=DB.items.filter(x=>(S.type==='all'||x.cls===S.type)&&x.name.replace(/\s/g,'').includes(q)).sort((a,b)=>a.name.length-b.name.length);
+ S.page=more?S.page+1:1;S.total=all.length;S.items=all.slice(0,S.page*ROWS);
+ status(S.items.length?`‘${S.q}’ 검색 결과 ${S.total.toLocaleString()}건 중 ${S.items.length}건 표시 · 데이터 기준 ${String(DB.updatedAt).slice(0,10)}`:`‘${S.q}’에 해당하는 결과가 없어요. 다른 이름이나 ‘전체’ 범위로 검색해 보세요.`);
+ draw();
+}
+// ---- 화면 그리기 ----
+function draw(){
+ $('#chips').innerHTML=CATS.map(c=>`<button class="btn chip ${S.cat===c?'on':''}" data-a="cat" data-c="${c}"><svg viewBox="0 0 64 64" fill="none" stroke="#783B40" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">${A[c]}</svg>${c}</button>`).join('');
+ document.querySelectorAll('[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===S.type));
+ $('#grid').innerHTML=S.items.map((x,i)=>`<article class="card"><div class="art">${art(x.name,x.cat)}</div><h3>${esc(x.name)}</h3><p class="sm">${esc(x.maker||x.cat||'')}</p>${x.pre?'<p class="sm">연결 후 영양성분 표시</p>':`<p class="sm">${esc(x.basis?x.basis+' 기준':'기준량 미제공')}</p><p><b>${fv(x.kcal,'kcal')}</b> · 당류 ${fv(x.sugar,'g')}</p>${cubes(x.sugar,6)}`}<div class="row" style="justify-content:center;margin-top:4px"><button class="btn s" data-a="info" data-i="${i}" ${x.pre?'disabled':''}>자세히</button><button class="btn s" data-a="add" data-i="${i}" ${x.pre?'disabled':''}>＋ 담기</button></div>${x.pre?'':`<label class="cmp"><input type="checkbox" data-a="cmp" data-i="${i}" ${S.cmp.some(c=>c.id===x.id)?'checked':''}>비교</label>`}</article>`).join('');
+ $('#more').innerHTML=!S.pre&&DB&&S.items.length&&S.items.length<S.total?'<button class="btn" data-a="more">더 보기</button>':(DB&&!S.items.length&&$('#status').className.includes('err')?'<button class="btn" data-a="retry">다시 시도</button>':'');
+ const b=$('#cmpbar');b.style.display=S.cmp.length>=2?'block':'none';b.textContent=`선택한 ${S.cmp.length}개 비교하기`;
+ receipt();
+}
+function receipt(){
+ $('#date').textContent=new Date().toLocaleDateString('ko-KR',{year:'numeric',month:'long',day:'numeric'});
+ $('#basket').innerHTML=S.cart.map((c,i)=>{const x=c.x;return `<div class="ln"><span>${esc(x.name)}<br><select data-a="mode" data-i="${i}" aria-label="양 기준"><option value="b">기준량 ${esc(x.basis||'미제공')}</option>${canUnit(x)?`<option value="u" ${c.m==='u'?'selected':''}>식품중량 ${esc(x.weight)}</option>`:''}</select></span><button class="btn s" data-a="del" data-i="${i}" aria-label="삭제">×</button></div>`}).join('')||'<p class="c muted">아직 담은 디저트가 없어요.</p>';
+ if(!S.cart.length){$('#total').innerHTML='';return}
+ const t=NUT.map(([k,n,u])=>{let s=0,miss=0;S.cart.forEach(c=>{const v=c.x[k];v==null?miss++:s+=v*mult(c.x,c.m)});return `<div class="ln"><span>${n}</span><span>${Math.round(s*10)/10} ${u}${miss?` <small>(미제공 ${miss}건 제외)</small>`:''}</span></div>`}).join('');
+ const sg=S.cart.reduce((a,c)=>a+(c.x.sugar==null?0:c.x.sugar*mult(c.x,c.m)),0);
+ $('#total').innerHTML=`<div class="tot"><div class="ln"><span>TOTAL · ${S.cart.length}개</span><span></span></div>${t}</div>${cubes(sg,12)}<p class="c sm">당류 ≈ 각설탕 ${(sg/SUGAR_CUBE_G).toFixed(1)}개 (1개=${SUGAR_CUBE_G}g 환산)</p>`;
+}
+function info(x){
+ $('#dbody').innerHTML=`<h2>${esc(x.name)}</h2><p class="sm">${esc(x.maker||'제조사 정보 없음')} · ${esc(x.cat||'')}</p><p>영양성분 <b>${esc(x.basis||'기준량 미제공')}</b> 기준</p>${NUT.concat([]).map(([k,n,u])=>`<div class="ln"><span>${n}</span><b>${fv(x[k],u)}</b></div>`).join('')}${cubes(x.sugar,15)}<p class="sm">1회 섭취참고량: ${esc(x.ref||'미제공')}<br>식품중량: ${esc(x.weight||'미제공')}<br>출처: 식품의약품안전처 식품영양성분DB</p>`;
+ $('#dlg').showModal();
+}
+function compare(){
+ const L=S.cmp,cl=['','alt','alt2'],bs=[...new Set(L.map(x=>x.basis||'미제공'))];
+ $('#dbody').innerHTML=`<h2>비교하기</h2>${bs.length>1?`<p class="sm err" style="color:var(--cherry)">⚠ 기준량이 서로 달라요(${esc(bs.join(' / '))}). 같은 기준이 아니면 공정한 비교가 아닐 수 있어요.</p>`:`<p class="sm">모두 ${esc(bs[0])} 기준</p>`}`+NUT.map(([k,n,u])=>{const mx=Math.max(...L.map(x=>x[k]||0))||1;return `<h3 style="margin:12px 0 2px;font-size:15px">${n}</h3>`+L.map((x,j)=>`<div class="sm">${esc(x.name)} · ${fv(x[k],u)}</div><div class="bw"><div class="bar ${cl[j]}" style="width:${x[k]==null?0:Math.max(2,x[k]/mx*100)}%"></div></div>`).join('')}).join('');
+ $('#dlg').showModal();
+}
+// ---- 이벤트 ----
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,i=+b.dataset.i,x=S.items[i];
+ if(a==='go')$('#shop').scrollIntoView({behavior:'smooth'});
+ else if(a==='cat'){S.cat=b.dataset.c;S.q=S.cat;$('#q').value='';load()}
+ else if(a==='type'){S.type=b.dataset.t;load()}
+ else if(a==='more')load(true);else if(a==='retry')load(S.page>1);
+ else if(a==='info')info(x);
+ else if(a==='add'){S.cart.push({x,m:'b'});save();receipt();status(`‘${x.name}’을(를) 영수증에 담았어요.`)}
+ else if(a==='del'){S.cart.splice(i,1);save();receipt()}
+ else if(a==='clear'){S.cart=[];save();receipt()}
+ else if(a==='cmp'){const j=S.cmp.findIndex(c=>c.id===x.id);if(j>=0)S.cmp.splice(j,1);else if(S.cmp.length>=3){b.checked=false;status('비교는 최대 3개까지 가능해요.')}else S.cmp.push(x);draw()}
+ else if(a==='cmpgo')compare();
+ else if(a==='close')$('#dlg').close()});
+document.addEventListener('change',e=>{const b=e.target.closest('[data-a="mode"]');if(b){S.cart[+b.dataset.i].m=b.value;save();receipt()}});
+$('#sf').onsubmit=e=>{e.preventDefault();const v=$('#q').value.trim();if(!v)return status('검색어를 입력해 주세요.',1);S.q=v;S.cat='';load()};
+load();
+</script></body></html>
